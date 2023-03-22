@@ -1,0 +1,17 @@
+services:
+  apache_exporter:
+    image: apache-expoter
+    container_name: apache-exporter
+    privileged: true
+    ports:
+      - "9117:9117"
+    restart: unless-stopped
+      #extra_hosts:
+      # - "localhost:127.17.0.1"
+    command: --scrape_uri="https://your.server.com/server-status?auto"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9117 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
