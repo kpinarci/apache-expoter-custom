@@ -19,7 +19,7 @@ jobs:
 
       - name: Test Docker image
         run: |
-          docker run --rm apache-exporter --version
+          docker run --rm apache-exporter --version && neofetch
 
           #      - name: Login to Docker Hub
           #        uses: docker/login-action@v1
